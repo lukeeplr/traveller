@@ -4,11 +4,19 @@ import React, { useCallback, useState } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
 import Avatar from '../shared/avatar'
 import MenuItem from './menuitem'
-import useRegisterModal from '@/hooks/useRegisterModel'
+import useRegisterModal from '@/hooks/useRegisterModal'
+import useLoginModal from '@/hooks/useLoginModal'
+import { User } from '@prisma/client'
+import { signOut } from 'next-auth/react'
 
-function UserMenu() {
+type UserMenuProps = {
+    currentUser?: User | null
+}
+
+function UserMenu({ currentUser }: UserMenuProps) {
 
     const registerModal = useRegisterModal()
+    const loginModal = useLoginModal()
     const [isOpen, setIsOpen] = useState(false)
     const toggleOpen = useCallback(() => {
         setIsOpen((value) => !value)
@@ -36,16 +44,47 @@ function UserMenu() {
         </div>
         {isOpen && (
             <div className='absolute rounded-xl shadow-md w-[40vh] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm'>
-                <>
+                {currentUser ? (
+                    <>
+                    <MenuItem 
+                        onClick={() => {}}
+                        label='Minhas viagens'
+                    />
+                    <MenuItem 
+                        onClick={() => {}}
+                        label='Meus favoritos'
+                    />
+                    <MenuItem 
+                        onClick={() => {}}
+                        label='Minhas reservas'
+                    />
+                    <MenuItem 
+                        onClick={() => {}}
+                        label='Minhas propriedades'
+                    />
+                    <MenuItem 
+                        onClick={() => {}}
+                        label='Anunciar meu espaço'
+                    />
+                    <hr />
+                    <MenuItem
+                     onClick={signOut}
+                     label='Sair'
+                     />
+                    </> 
+                 ) : (
+                    <>
                 <MenuItem
-                 onClick={() => {}}
+                 onClick={loginModal.onOpen}
                  label='Entrar'
                  />
                  <MenuItem
                  onClick={registerModal.onOpen}
                  label='Registre-se'
                  />
+                 
                 </>
+                 )}
             </div>
         )}
     </div>
