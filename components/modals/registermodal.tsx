@@ -13,12 +13,19 @@ import Input from '../inputs/input'
 import toast from 'react-hot-toast'
 import Button from '../shared/button'
 import { signIn } from 'next-auth/react'
+import useLoginModal from '@/hooks/useLoginModal'
 
 
 function RegisterModal() {
   
     const registerModal = useRegisterModal()
+    const loginModal = useLoginModal()
     const [isLoading, setIsLoading] = useState(false)
+
+    const toggle = useCallback(() => {
+        registerModal.onClose()
+        loginModal.onOpen()
+    }, [loginModal, registerModal])
 
     const {
         register,
@@ -102,7 +109,7 @@ function RegisterModal() {
                 <div className='flex items-center justify-center gap-2'>
                     <div>Já possui uma conta?</div>
                     <div className='text-neutral-800 font-semibold cursor-pointer hover:underline'
-                        onClick={registerModal.onClose}
+                        onClick={toggle}
                     >Faça login</div>
                 </div>
             </div>
@@ -113,7 +120,7 @@ function RegisterModal() {
     <Modal
         disabled={isLoading}
         isOpen={registerModal.isOpen}
-        title="Crie sua conta"
+        title="Registre-se"
         actionLabel='Continue'
         onClose={registerModal.onClose}
         onSubmit={handleSubmit(onSubmit)}

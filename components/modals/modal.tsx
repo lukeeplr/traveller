@@ -13,11 +13,11 @@ type ModalProps = {
     footer?: React.ReactElement
     actionLabel: string     
     disabled?: boolean
-    secondayAction?: () => void
-    secondayActionLabel?: string
+    secondaryAction?: () => void
+    secondaryActionLabel?: string
 }
 
-function Modal({isOpen, onClose, onSubmit, title, body, footer, actionLabel, disabled, secondayAction, secondayActionLabel}: ModalProps) {
+function Modal({isOpen, onClose, onSubmit, title, body, footer, actionLabel, disabled, secondaryAction, secondaryActionLabel}: ModalProps) {
 
     const [showModal, setShowModal] = useState(isOpen)
 
@@ -53,13 +53,13 @@ function Modal({isOpen, onClose, onSubmit, title, body, footer, actionLabel, dis
 
     const handleSecondaryAction = useCallback(() => {
         
-        if (disabled || !secondayAction) {
+        if (disabled || !secondaryAction) {
             return
         }
 
-        secondayAction()
+        secondaryAction()
 
-    }, [disabled, secondayAction])
+    }, [disabled, secondaryAction])
 
     if (!isOpen) {
         return null
@@ -88,8 +88,8 @@ function Modal({isOpen, onClose, onSubmit, title, body, footer, actionLabel, dis
                             </div>
                             <div className='flex flex-col gap-2 p-6'>
                                 <div className='flex items-center gap-4 w-full'>
-                                    {secondayAction && secondayActionLabel && (
-                                    <Button label={secondayActionLabel} disabled={disabled} onClick={handleSecondaryAction} outline />
+                                    {secondaryAction && secondaryActionLabel && (
+                                    <Button label={secondaryActionLabel} disabled={disabled} onClick={handleSecondaryAction} outline />
                                     )}
                                     <Button label={actionLabel} disabled={disabled} onClick={handleSubmit} />
 
