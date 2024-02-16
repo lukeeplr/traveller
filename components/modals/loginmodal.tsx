@@ -90,13 +90,13 @@ function LoginModal() {
                 outline
                 label='Continue com Google'
                 icon={FcGoogle}
-                onClick={() => {}}
+                onClick={() => signIn('google')}
             />
             <Button
                 outline
                 label='ou com Github'
                 icon={AiFillGithub}
-                onClick={() => {}}
+                onClick={() => signIn('github')}
             />
             <div className='text-neutral-500 text-center mt-4 font-light'>
                 <div className='flex items-center justify-center gap-2'>

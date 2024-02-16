@@ -12,6 +12,7 @@ import Heading from '../shared/heading'
 import Input from '../inputs/input'
 import toast from 'react-hot-toast'
 import Button from '../shared/button'
+import { signIn } from 'next-auth/react'
 
 
 function RegisterModal() {
@@ -89,13 +90,13 @@ function RegisterModal() {
                 outline
                 label='Continue com Google'
                 icon={FcGoogle}
-                onClick={() => {}}
+                onClick={() => signIn('google')}
             />
             <Button
                 outline
                 label='ou com Github'
                 icon={AiFillGithub}
-                onClick={() => {}}
+                onClick={() => signIn('github')}
             />
             <div className='text-neutral-500 text-center mt-4 font-light'>
                 <div className='flex items-center justify-center gap-2'>
