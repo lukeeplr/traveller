@@ -6,7 +6,9 @@ import React from 'react'
 
 function ToasterProvider() {
   return (
-    <Toaster />
+    <Toaster 
+      position='bottom-right'
+    />
   )
 }
 
