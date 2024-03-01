@@ -10,7 +10,7 @@ function Logo() {
 
   return (
     <div 
-    className="hidden md:block cursor-pointer text-purple-500 font-bold"
+    className="hidden md:block cursor-pointer text-purple-500 font-bold text-2xl"
     onClick={() => router.push('/')}
     >
         traveller
