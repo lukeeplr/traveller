@@ -9,12 +9,14 @@ type EmptyStateProps = {
     title?: string
     subtitle?: string
     showReset?: boolean
+    ResetLabel?: string
 }
 
 function EmptyState({
     title='Parece que não tem nada por aqui', 
     subtitle='Tente mudar ou remover alguns filtros', 
-    showReset
+    showReset,
+    ResetLabel='Remover filtros'  
 }: EmptyStateProps) {
 
     const router = useRouter()
@@ -26,7 +28,7 @@ function EmptyState({
             {showReset && (
                 <Button
                     outline
-                    label='Remover Filtros'
+                    label={ResetLabel}
                     onClick={() => router.push('/')}
                 />
             )}
