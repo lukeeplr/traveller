@@ -5,9 +5,10 @@ import Search from './search'
 import UserMenu from './usermenu'
 import { User } from '@prisma/client'
 import Categories from './categories'
+import { SafeUser } from '@/types'
 
 type NavbarProps = {
-  currentUser?: User | null
+  currentUser?: SafeUser | null
 }
 
 function Navbar({ currentUser }: NavbarProps) {

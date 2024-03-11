@@ -1,5 +1,4 @@
 import prisma from "@/libs/prismadb";
-import getCurrentUser from "./getCurrentUser";
 
 type IParams = {
     listingId?: string,
@@ -36,7 +35,19 @@ export default async function getReservations(params: IParams) {
             }
         })
         
-        return reservations
+        const safeReservations = reservations.map(
+            (reservation) => ({
+            ...reservation,
+            createdAt: reservation.createdAt.toISOString(),
+            startDate: reservation.startDate.toISOString(),
+            endDate: reservation.endDate.toISOString(),
+            listing: {
+              ...reservation.listing,
+              createdAt: reservation.listing.createdAt.toISOString(),
+            },
+          }));
+      
+          return safeReservations;
         
     } catch (error: any) {
         throw new Error(error)

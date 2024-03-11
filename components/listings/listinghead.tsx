@@ -6,13 +6,14 @@ import React from 'react'
 import Heading from '../shared/heading'
 import Image from 'next/image'
 import HeartButton from '../shared/heartbutton'
+import { SafeUser } from '@/types'
 
 type ListingHeadProps = {
     title: string
     imageSrc: string
     locationValue: string
     id: string
-    currentUser?: User | null
+    currentUser?: SafeUser | null
 }
 
 function ListingHead({title, imageSrc, locationValue, id, currentUser}: ListingHeadProps) {

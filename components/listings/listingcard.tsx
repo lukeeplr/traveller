@@ -8,15 +8,16 @@ import { useRouter } from 'next/navigation'
 import React, { useCallback, useMemo } from 'react'
 import HeartButton from '../shared/heartbutton'
 import Button from '../shared/button'
+import { SafeListing, SafeReservation, SafeUser } from '@/types'
 
 type ListingCardProps = {
-    data: Listing
-    reservation?: Reservation
+    data: SafeListing
+    reservation?: SafeReservation
     onAction?: (id: string) => void
     disabled?: boolean
     actionLabel?: string
     actionId?: string
-    currentUser?: User | null
+    currentUser?: SafeUser | null
 
 }
 

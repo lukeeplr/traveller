@@ -7,9 +7,10 @@ import { IconType } from 'react-icons'
 import Avatar from '../shared/avatar'
 import ListingCategory from './listingcategory'
 import dynamic from 'next/dynamic'
+import { SafeUser } from '@/types'
 
 type ListingInfoProps = {
-    user: User
+    user: SafeUser
     category: {
         label: string
         icon: IconType
