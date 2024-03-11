@@ -32,7 +32,7 @@ export default async function RootLayout({
         <LoginModal />
         <RentModal />
         <RegisterModal />
-        <Suspense fallback={<></>}>
+        <Suspense fallback={<div></div>}>
         <SearchModal />
         </Suspense>
         <Navbar currentUser={currentUser}/>

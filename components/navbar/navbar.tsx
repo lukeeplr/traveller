@@ -26,7 +26,7 @@ function Navbar({ currentUser }: NavbarProps) {
             </div>
         </Container>
         </div>
-        <Suspense fallback={<></>}>
+        <Suspense fallback={<div>Categorias</div>}>
         <Categories />
         </Suspense>
     </div>

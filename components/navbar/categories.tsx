@@ -22,7 +22,7 @@ function Categories() {
     <Container>
         <div className='pt-4 flex items-center justify-between overflow-x-auto'>
             {categories.map((item) => (
-                <Suspense key={item.label} fallback={<></>}>
+                <Suspense fallback={<div>Categoria</div>}>
                 <CategoryBox
                     key={item.label}
                     label={item.label}
