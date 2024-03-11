@@ -8,6 +8,7 @@ import LoginModal from "@/components/modals/loginmodal";
 import getCurrentUser from "@/actions/getCurrentUser";
 import RentModal from "@/components/modals/rentmodal";
 import SearchModal from "@/components/modals/searchmodal";
+import { Suspense } from "react";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -31,7 +32,9 @@ export default async function RootLayout({
         <LoginModal />
         <RentModal />
         <RegisterModal />
+        <Suspense fallback={<></>}>
         <SearchModal />
+        </Suspense>
         <Navbar currentUser={currentUser}/>
         <div className='pb-20 pt-28'>
         {children}

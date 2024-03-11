@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Container from '../shared/container'
 import Logo from './logo'
 import Search from './search'
@@ -19,12 +19,16 @@ function Navbar({ currentUser }: NavbarProps) {
         <Container>
             <div className="flex items-center justify-between gap-3 md:gap-0">
                 <Logo />
+                <Suspense fallback={<div>Buscar</div>}>
                 <Search />
+                </Suspense>
                 <UserMenu currentUser={currentUser} />
             </div>
         </Container>
         </div>
+        <Suspense fallback={<></>}>
         <Categories />
+        </Suspense>
     </div>
   )
 }

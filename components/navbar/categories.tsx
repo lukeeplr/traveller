@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import Container from '../shared/container'
 
 import { categories } from '@/libs/constants'
@@ -22,12 +22,14 @@ function Categories() {
     <Container>
         <div className='pt-4 flex items-center justify-between overflow-x-auto'>
             {categories.map((item) => (
+                <Suspense key={item.label} fallback={<></>}>
                 <CategoryBox
                     key={item.label}
                     label={item.label}
                     selected={category === item.label}
                     icon={item.icon}
                 />
+                </Suspense>
             ))}
         </div>
     </Container>
